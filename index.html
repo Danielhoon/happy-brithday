@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生日快乐！</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 封面页 -->
+    <div class="cover" id="coverPage">
+        <div class="content">
+            <h1 class="title">寿星请点下面的button</h1>
+            <div class="arrow">↓</div>
+            <button class="birthday-button" id="startButton">点击这里</button>
+        </div>
+    </div>
+
+    <!-- 蛋糕部分 -->
+    <div class="cake-section" id="cakeSection" style="display: none; margin-top: 50vh; text-align: center;">
+        <h2 class="birthday-message" id="birthdayMessage" style="margin-bottom: 90px; padding-top: 20px; font-size: 1.8em;">祝你生日快乐！</h2>
+        <div class="cake" style="margin-bottom: 30px;">
+            <div class="candle" id="candle">
+                <div class="flame"></div>
+            </div>
+            <div class="cake-top"></div>
+            <div class="cake-middle"></div>
+            <div class="cake-bottom"></div>
+        </div>
+        <button class="blow-button" id="blowButton" style="display: none; margin: 0 auto;">吹灭蜡烛</button>
+    </div>
+
+        <!-- 礼物环节 -->
+        <div class="gift-section" id="giftSection" style="display: none;">
+            <h2 class="gift-message" id="giftMessage">你想要什么生日礼物？</h2>
+            <textarea class="gift-input" id="giftInput" placeholder="在这里输入你想要的礼物..."></textarea>
+            <button class="submit-button" id="submitGift">提交</button>
+            
+            <!-- 分析中的动画 -->
+            <div class="loading-animation" id="loadingAnimation" style="display: none;">
+                <div class="loading-text">分析中</div>
+                <div class="loading-dots">
+                    <span>.</span>
+                    <span>.</span>
+                    <span>.</span>
+                </div>
+            </div>
+
+            <!-- 最终回答 -->
+            <div class="final-answer" id="finalAnswer" style="display: none;">
+                <h2 class="final-message">哈哈，我不会送你的，我的生日礼物是</h2>
+                <div class="arrow-down">↓</div>
+                <button class="real-gift-button" id="realGiftButton">
+                    <div class="gift-frame">点击查看真正的礼物</div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 最终礼物页面 -->
+    <div class="final-gift-page" id="finalGiftPage" style="display: none;">
+        <div class="final-gift-container" style="padding: 20px; max-width: 100%; overflow-y: auto; height: 100vh;">
+            <div class="gift-message-frame" style="background: rgba(255, 255, 255, 0.95); border-radius: 15px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin: 20px auto; max-width: 900px;">
+                <div class="gift-message-content" style="white-space: pre-line; font-size: 1.2rem; line-height: 1.8; padding: 20px; text-align: left; max-width: 800px; margin: 0 auto;">
+生日快乐，芊慧！
+
+没有错，我送你的生日礼物是，我的真心话！
+
+其实跟你联系回的这几个月以来，我想了很多，多得我都不知道怎么去说。总结来说，就是我该不该放下这段感情。
+
+一开始的时候，是完全不想的，毕竟都2年了，要放下的早就放下了，放不下就确实对我来说很重要。不得不说，我很傻，傻到为了一个不可能的事情在努力，但我心是开心的，我觉得这样对我是好的，是有意义的。
+
+可随着我们3个几次的见面之后，我渐渐对这个事情感到绝望，感到痛苦，也在烦自己为什么不可以再决绝一点，再努力一点….. 到了之后（大概是10月中吧），我开始有点释怀了（是真是假我不知道啦）。
+
+哇，我自己也没想到，我敢写出这些东西，不过我也没有想说什么，纯粹想让你知道我内心在想什么而已，不喜欢的话就不看吧，不逼你。
+
+（看起来会非常乱，毕竟我思绪混乱，想到什么就写什么🤣）
+                </div>
+                <!-- 蛋糕部分 -->
+                <div class="cake-section" id="cakeSection" style="margin-top: 40px; text-align: center;">
+                    <h2 class="birthday-message" id="birthdayMessage" style="margin-bottom: 20px;">祝你生日快乐！</h2>
+                    <div class="cake">
+                        <div class="candle" id="candle">
+                            <div class="flame"></div>
+                        </div>
+                        <div class="cake-top"></div>
+                        <div class="cake-middle"></div>
+                        <div class="cake-bottom"></div>
+                    </div>
+                    <button class="blow-button" id="blowButton" style="display: none; margin-top: 20px;">吹灭蜡烛</button>
+                </div>
+                <!-- 音乐控制 -->
+                <div class="music-control">
+                    <audio id="bgMusic" loop>
+                        <source src="handwritten-past.mp4" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <button id="musicToggle" class="music-button">
+                        <span class="music-icon">🎵</span> 手写的从前
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 开始按钮点击事件
+        document.getElementById('startButton').addEventListener('click', function() {
+            document.getElementById('coverPage').style.display = 'none';
+            document.getElementById('cakeSection').style.display = 'block';
+            
+            // 自动滚动到蛋糕部分
+            setTimeout(() => {
+                document.querySelector('.cake-section').scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+
+                // 显示不同的消息
+                setTimeout(() => {
+                    document.getElementById('birthdayMessage').textContent = '好，现在请许愿';
+                    
+                    // 显示吹蜡烛按钮
+                    setTimeout(() => {
+                        document.getElementById('birthdayMessage').textContent = '现在，请吹灭蜡烛';
+                        document.getElementById('blowButton').style.display = 'block';
+                    }, 3000);
+                }, 3000);
+            }, 2000);
+        });
+
+        // 吹蜡烛按钮点击事件
+        document.getElementById('blowButton').addEventListener('click', function() {
+            document.querySelector('.flame').style.display = 'none';
+            this.textContent = '生日快乐！';
+            this.disabled = true;
+
+            // 3秒后显示礼物环节
+            setTimeout(() => {
+                document.getElementById('giftSection').style.display = 'block';
+                document.getElementById('giftSection').scrollIntoView({ behavior: 'smooth' });
+            }, 2000);
+        });
+
+        // 提交礼物按钮点击事件
+        document.getElementById('submitGift').addEventListener('click', function() {
+            const giftInput = document.getElementById('giftInput');
+            if (giftInput.value.trim() !== '') {
+                // 隐藏输入框和提交按钮
+                giftInput.style.display = 'none';
+                this.style.display = 'none';
+                document.getElementById('giftMessage').style.display = 'none';
+                
+                // 显示加载动画
+                document.getElementById('loadingAnimation').style.display = 'block';
+
+                // 3秒后显示最终答案
+                setTimeout(() => {
+                    document.getElementById('loadingAnimation').style.display = 'none';
+                    document.getElementById('finalAnswer').style.display = 'block';
+                }, 3000);
+            }
+        });
+
+        // 真正的礼物按钮点击事件
+        document.getElementById('realGiftButton').addEventListener('click', function() {
+            // 隐藏当前页面
+            document.getElementById('giftSection').style.display = 'none';
+            document.getElementById('cakeSection').style.display = 'none';
+            
+            // 显示最终礼物页面
+            document.getElementById('finalGiftPage').style.display = 'block';
+
+            // 尝试在用户的直接点击事件里立即播放（避免被浏览器的 autoplay 策略拦截）
+            const music = document.getElementById('bgMusic');
+            if (music) {
+                music.play().then(() => {
+                    // 播放成功，显示播放动画
+                    document.getElementById('musicToggle').classList.add('playing');
+                }).catch((err) => {
+                    // 如果被拦截，保留控制按钮供用户手动播放
+                    console.warn('Audio play was prevented or failed:', err);
+                    document.getElementById('musicToggle').classList.remove('playing');
+                });
+            }
+
+            // 添加动画效果（稍后显示框架）
+            setTimeout(() => {
+                document.querySelector('.gift-message-frame').classList.add('show');
+            }, 100);
+        });
+
+        // 音乐控制按钮点击事件
+        document.getElementById('musicToggle').addEventListener('click', function() {
+            const music = document.getElementById('bgMusic');
+            if (music.paused) {
+                music.play();
+                this.classList.add('playing');
+            } else {
+                music.pause();
+                this.classList.remove('playing');
+            }
+        });
+
+
+    </script>
+</body>
+</html>

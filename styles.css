@@ -1,0 +1,417 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Ma Shan Zheng', cursive;
+    background: linear-gradient(135deg, #ff6b6b, #ffd93d);
+    min-height: 100vh;
+    overflow-x: hidden;
+    letter-spacing: 2px;
+}
+
+/* 封面页样式 */
+.cover {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.content {
+    padding: 20px;
+}
+
+.title {
+    color: white;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.arrow {
+    color: white;
+    font-size: 4em;
+    margin: 20px 0;
+    animation: bounce 2s infinite;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.birthday-button {
+    font-size: 1.5em;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    background-color: white;
+    color: #ff6b6b;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    animation: wiggle 1s infinite;
+}
+
+/* 照片墙样式 */
+.photo-wall {
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.photo-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+.photo-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 48%;
+}
+
+.photo {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.photo:hover {
+    transform: scale(1.05);
+}
+
+/* 蛋糕部分样式 */
+.cake-section {
+    text-align: center;
+    padding: 50px 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.birthday-message {
+    color: white;
+    font-size: 2.5em;
+    margin-bottom: 50px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.cake {
+    position: relative;
+    width: 200px;
+    margin: 50px auto;
+}
+
+.cake-top,
+.cake-middle,
+.cake-bottom {
+    background: #ff9999;
+    border-radius: 10px;
+    position: relative;
+}
+
+.cake-top {
+    height: 60px;
+    width: 100%;
+    background: #ffcccc;
+}
+
+.cake-middle {
+    height: 50px;
+    width: 90%;
+    margin: -10px auto;
+}
+
+.cake-bottom {
+    height: 40px;
+    width: 80%;
+    margin: -10px auto;
+}
+
+.candle {
+    position: absolute;
+    width: 20px;
+    height: 60px;
+    background: #fff;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+}
+
+.flame {
+    position: absolute;
+    width: 20px;
+    height: 30px;
+    background: #ffd700;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    animation: flicker 0.5s infinite alternate;
+}
+
+.blow-button {
+    margin-top: 30px;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    background: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 礼物部分样式 */
+.gift-section {
+    text-align: center;
+    padding: 50px 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.gift-message {
+    color: black;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.gift-input {
+    width: 80%;
+    max-width: 500px;
+    height: 150px;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    resize: none;
+}
+
+.submit-button {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    background: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.submit-button:hover {
+    transform: scale(1.05);
+}
+
+/* 加载动画样式 */
+.loading-animation {
+    margin: 30px 0;
+}
+
+.loading-text {
+    color: white;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.loading-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.loading-dots span {
+    font-size: 2em;
+    color: white;
+    animation: dots 1.4s infinite;
+}
+
+.loading-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.loading-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* 最终答案样式 */
+.final-answer {
+    text-align: center;
+}
+
+.final-message {
+    color: white;
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.arrow-down {
+    color: white;
+    font-size: 3em;
+    margin: 20px 0;
+    animation: bounce 2s infinite;
+}
+
+.real-gift-button {
+    padding: 20px 40px;
+    background: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.gift-frame {
+    font-size: 1.5em;
+    color: #ff6b6b;
+    padding: 20px;
+    border: 2px dashed #ff6b6b;
+    border-radius: 10px;
+}
+
+/* 动画效果 */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-30px);
+    }
+    60% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes wiggle {
+    0%, 100% {
+        transform: rotate(-5deg);
+    }
+    50% {
+        transform: rotate(5deg);
+    }
+}
+
+@keyframes flicker {
+    0%, 100% {
+        transform: translateX(-50%) scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateX(-50%) scale(1.1);
+        opacity: 1;
+    }
+}
+
+@keyframes dots {
+    0%, 20% {
+        transform: translateY(0);
+        opacity: 0.2;
+    }
+    50% {
+        transform: translateY(-10px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 0.2;
+    }
+}
+
+/* 最终礼物页面样式 */
+.final-gift-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ff6b6b, #ffd93d);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.final-gift-container {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.gift-message-frame {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.gift-message-frame.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.gift-message-content {
+    font-family: 'Ma Shan Zheng', cursive;
+    font-size: 2em;
+    color: #333;
+    line-height: 1.8;
+    text-align: center;
+    white-space: pre-line;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* 音乐控制样式 */
+.music-control {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.music-button {
+    background: none;
+    border: none;
+    font-size: 2em;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 107, 107, 0.1);
+    transition: all 0.3s ease;
+}
+
+.music-button:hover {
+    background: rgba(255, 107, 107, 0.2);
+    transform: scale(1.1);
+}
+
+.music-button.playing {
+    animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
